@@ -1,43 +1,35 @@
-<h1>Areas#index</h1>
-<p>Find me in app/views/areas/index.html.erb</p>
+<h1>Happiness Calculator</h1>
+<p>Calculate your life satisfaction with the Happiness Calculator.</p>
 
-<h1>Put down something that is of importance to you.</h1>
-<% if !@area.name %>
-  <%= form_for @area do |f| %>
-    <div>
-      <%= f.label "Input an area of your life that is important to you:" %>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <%= f.label "How much of a priority is this area in your life?" %>
-      1<%= f.range_field :importance, within: 1..10 %>10
-    </div><div id="output">5</div>
-    <div>
-      <%= f.label "How satisfied are you with this area of your life?" %>
-      1<%= f.range_field :satisfaction, within: 1..10 %>10
-    <div>
-      <%= f.submit %>
-    </div>
-  <% end %>
-<% else %>
+<div class="calculator">
+  <fieldset class="name-field">
+    <%= form_tag('/', method: :post) do %>
+      <p>Enter an area in your life that you value:</p>
+      <%= text_field_tag 'area', nil, placeholder: 'Enter an area' %>
+      <p>Or click on one below:</p>
+      <ul>
+        <li class="area-example">Family</li>
+        <li class="area-example">Friends</li>
+        <li class="area-example">Career</li>
+        <li class="area-example">Exercise</li>
+        <li class="area-example">Volunteer</li>
+        <li class="area-example">Faith</li>
+        <li class="area-example">Leisure</li>
+        <li class="area-example">Education</li>
+      </ul>
 
-<div class="database">
-  <table>
-    <tr>
-      <thead>
-        <th>Area</th>
-        <th>Importance</th>
-        <th>Satisfaction</th>
-      </thead>
-    </tr>
-    <tbody>
-      <tr>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  </fieldset>
+  <div class="second-part">
+    <fieldset class="importance-field">
+      <p>Input the importance that this has in your life:</p>
+      <div class="number-field">From 1 to 10</div>
+      <%= render 'numbers' %>
+    </fieldset>
+    <fieldset class="satisfaction-field">
+      <p>How happy are you about <span>this area</span>?</p>
+      <%= range_field_tag 'satisfaction', nil, within: 1..10 %>
+      <div class="output">Result</div>
+    </fieldset>
+  </div>
+    <% end %>
 </div>
-
-
-
-<% end %>
