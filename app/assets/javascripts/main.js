@@ -15,7 +15,8 @@ $(document).ready( function() {
   });
 
   $('.area-example').on('click', function() {
-    $('input[type="text"]').val($(this).html());
+    var field = ($(this).html());
+    $('input[type="text"]').val(field);
   })
 
   $('.num-button, .sub-button, .clear-button').hover(function() {

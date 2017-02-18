@@ -6,10 +6,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Roboto+Condensed" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="shell">
+      <%= yield %>
+    </div>
     <div>
       <%= console %>
     </div>
