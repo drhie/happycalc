@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  importance: 1
+  satisfaction: 1
+
+two:
+  name: MyString
+  importance: 1
+  satisfaction: 1
