@@ -1,12 +1,12 @@
-<h1>Happiness Calculator</h1>
-<p>Calculate your life satisfaction with the Happiness Calculator.</p>
+<h1 class="title">Life Satisfaction Calculator</h1>
+<p>Calculate how satisfied you are with your life by using the calculator below.</p>
 
 <div class="calculator">
   <fieldset class="name-field">
     <%= form_tag('/', method: :post) do %>
-      <p>Enter an area in your life that you value:</p>
+      <p>1. Enter an area in your life that you value:</p>
       <%= text_field_tag 'area', nil, placeholder: 'Enter an area' %>
-      <p>Or click on one below:</p>
+      <p>Or click one of the options below:</p>
       <ul>
         <li class="area-example">Family</li>
         <li class="area-example">Friends</li>
@@ -21,15 +21,19 @@
   </fieldset>
   <div class="second-part">
     <fieldset class="importance-field">
-      <p>Input the importance that this has in your life:</p>
+      <p>2. Input the importance this area has in your life:</p>
       <div class="number-field">From 1 to 10</div>
       <%= render 'numbers' %>
     </fieldset>
     <fieldset class="satisfaction-field">
-      <p>How happy are you re: <span>this area</span>?</p>
-      <%= range_field_tag 'satisfaction', nil, within: 1..10 %>
-      <div class="output">Result</div>
+      <p>3. Gauge how happy you are in this area:</p>
+      <%= range_field_tag 'satisfaction', nil, within: 0..20 %>
+      <div class="output">Move the slider!</div>
     </fieldset>
   </div>
-    <% end %>
+  <% end %>
+  <div class="enter-field">
+    <div class="dock">4. <span id="add">ADD</span> it into the calculator below!</div>
+    <div class="screen">...</div>
+  </div>
 </div>

@@ -2,12 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$border-color: lightgray;
+$button-border-color: gray;
 *,
 *::after,
 *::before {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.title {
+  font-family: "Caveat Brush";
+  font-size: 2.5em;
 }
 
 .shell {
@@ -28,18 +35,19 @@
 
   fieldset {
     padding: 10px;
-    border: 1px solid green;
+    border: 1px solid $border-color;
   }
 
   .name-field {
     .area-example {
       padding: 5px;
-      border: 1px solid gray;
+      border: 1px solid $button-border-color;
       display: inline-block;
       margin: 5px 0;
       width: 23.5%;
       text-align: center;
       font-size: 0.9em;
+      box-shadow: 1px 1px 2px black;
     }
   }
 
@@ -66,10 +74,11 @@
         border-radius: 50%;
         width: 50px;
         height: 50px;
-        border: 1px solid gray;
+        border: 1px solid $button-border-color;
         display: table;
         float: right;
         margin: 2px;
+        box-shadow: 1px 1px 2px black;
 
         div {
           display: table-cell;
@@ -86,15 +95,17 @@
     vertical-align: top;
     height: 100%;
     float: right;
+    padding: 10px 5px;
   }
 
   input#satisfaction {
     -webkit-appearance: slider-vertical;
-    height: 200px;
+    height: 220px;
     width: 100%;
   }
 
   input#area, .number-field {
+    margin: 10px 0;
     background-color: white;
     width: 100%;
     text-align: center;
@@ -104,6 +115,28 @@
   }
 
   .second-part {
-    height: 330px;
+    height: 350px;
+  }
+
+  .enter-field {
+    border: 1px solid $border-color;
+    padding: 10px;
+
+    span {
+      border: 1px solid $button-border-color;
+      padding: 4px;
+      margin: 2px;
+      box-shadow: 1px 1px 2px black;
+    }
+  }
+
+  .screen {
+    margin: 15px 0 0;
+    border: 1px solid lightgray;
+    background: gainsboro;
+    padding: 10px 5px;
+    font-size: 1.2em;
+    font-family: 'Courier New';
+    text-align: right;
   }
 }
