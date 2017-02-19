@@ -15,7 +15,7 @@ $(document).ready( function() {
   $('.intro, .start').fadeIn();
 
   $('.start button').on('click', function() {
-    currentSession = Math.random();
+    currentSession = Math.random().toFixed(10);
     // console.log(currentSession);
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
@@ -146,7 +146,7 @@ $(document).ready( function() {
           method: 'DELETE'
         });
         reset();
-        currentSession = Math.random();
+        currentSession = Math.random().toFixed(10);
         // console.log(currentSession);
       });
     } else {
