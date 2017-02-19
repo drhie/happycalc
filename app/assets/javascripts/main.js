@@ -73,7 +73,7 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        url: 'http://polar-shore-16234.herokuapp.com/areas',
+        url: 'http://polar-shore-16234.herokuapp.com/areas.json',
         // url: 'http://localhost:3000/areas',
         method: 'POST',
         data: {
