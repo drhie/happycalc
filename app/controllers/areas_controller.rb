@@ -1,6 +1,7 @@
 class AreasController < ApplicationController
   def index
     @area = Area.new
+    @areas = Area.all
   end
 
   def new
@@ -9,6 +10,13 @@ class AreasController < ApplicationController
 
   def create
     @area = Area.create(area_params)
+    if @area.save
+      respond_to do |format|
+        format.json do
+          render json: @area, except: %i(created_at updated_at)
+        end
+      end
+    end
   end
 
   def show

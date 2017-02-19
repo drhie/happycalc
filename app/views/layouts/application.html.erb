@@ -10,8 +10,16 @@
   </head>
 
   <body>
+    <div class="error">
+      <h2>It looks like the calculator coudn't add your stuff!</h2>
+      <p>Make sure you put in a unique area for step 1, and set values for 2 and 3 before you click add!</p>
+      <button>ALL RIGHT, THEN.</button>
+    </div>
     <div class="shell">
       <%= yield %>
+    </div>
+    <div style="height: 10%">
+      <%= console %>
     </div>
   </body>
 </html>

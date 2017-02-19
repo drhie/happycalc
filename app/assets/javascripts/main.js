@@ -9,6 +9,7 @@ $(document).ready( function() {
   var name;
   var importance;
   var satisfaction;
+  $('input#importance').attr('readonly', true);
 
   $('.area-example, #add').hover(function() {
     $(this).css('border', '1px solid yellow').css('font-weight', '900');
@@ -18,10 +19,10 @@ $(document).ready( function() {
 
   $('.area-example').on('click', function() {
     var field = ($(this).html());
-    $('input[type="text"]').val(field);
+    $('.name-field input[type="text"]').val(field);
   })
 
-  $('.num-button, .sub-button, .clear-button').hover(function() {
+  $('.num-button, .sub-button, .clear-button, .calculate').hover(function() {
     $(this).css('border', '1px solid yellow');
     $(this).css('font-weight', '900');
   }, function() {
@@ -32,47 +33,59 @@ $(document).ready( function() {
   $('.num-button').on('click', function(){
     var re = /\d/;
     var number = re.exec($(this).html())
-    if (parseInt($('.number-field').html() + number) <= 10 && ($('.number-field').html().length <= 1)) {
-      $('.number-field').append(number);
-      $('.number-field').css('color', 'black');
+    var start = Number.isInteger(parseInt($('input#importance').val())) ? parseInt($('input#importance').val()) : 0
+    if ((start === 1) && (parseInt(number) === 0)) {
+      $('input#importance').val("10");
     } else {
-      $('.number-field').html(number);
-      $('.number-field').css('color', 'black');
+      if (parseInt(number) !== 0) { $('input#importance').val(number); }
     }
   });
 
   $('.clear-button').on('click', function() {
-    $('.number-field').html("");
+    $('input#importance').val("");
   });
 
   var slider = $('input#satisfaction');
   slider.on("input", function() {
-    $('.output').html("I'm " + Math.floor((this.value/20)*100) + '% happy about it.');
+    $('.output').html("I'm <strong>" + Math.floor((this.value/20)*100) + '%</strong> happy about it.');
   })
 
-  $('#here').on('click', function() {
-    if ($('input#area').val() !== "") {
-      if($('.screen').html() === "...") {
-        // $.ajax({
-        //   url: 'http://localhost:3000/areas',
-        //   method: 'POST',
-        //   data: {
-        //     name: $('input#area').val(),
-        //     importance: parseInt($('.number-field').html()),
-        //     satisfaction: parseInt($('input#satisfaction').val()),
-        //   }
-        // }).done(function(data) {
-        //   console.log(data)
-        // });
-        $('.screen').html("(" + $('input#area').val().toLowerCase() + ")");
-        reset();
-      } else {
-        $('.screen').append('<br>');
-        $('.screen').append("+ (" + $('input#area').val().toLowerCase() + ")");
-        reset();
-      }
+  $('#add').on('click', function() {
+    var name = $('input#area').val();
+    var importance = $('input#importance').val();
+    var satisfaction = $('input#satisfaction').val();
+    if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!")) {
+      $.ajax({
+        dataType: 'json',
+        url: 'http://localhost:3000/areas',
+        method: 'POST',
+        data: {
+          "area": {
+            "name": name,
+            "importance": parseInt(importance),
+            "satisfaction": parseInt(satisfaction)
+          },
+        }
+      }).done(function(data) {
+        if ($('input#area').val() !== "") {
+          if($('.screen').html() === "...") {
+            $('.screen').html("(" + $('input#area').val().toLowerCase() + ")");
+            reset();
+          } else {
+            $('.screen').append('<br>');
+            $('.screen').append(" + (" + $('input#area').val().toLowerCase() + ")");
+            reset();
+          }
+        }
+      });
+    } else {
+      $('.error').fadeIn();
     }
   });
+
+  $('.error button').on('click', function() {
+    $('.error').fadeOut();
+  })
 
   var reset = function() {
     $('input#area').val("");

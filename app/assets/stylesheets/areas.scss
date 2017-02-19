@@ -4,12 +4,19 @@
 
 $border-color: lightgray;
 $button-border-color: gray;
+$button-shadow: 1px 1px 2px black;
+$button-background: lightcyan;
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  font-family: 'Roboto Condensed';
 }
 
 .title {
@@ -24,7 +31,7 @@ $button-border-color: gray;
 
 .calculator {
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 0px;
   border: 2px solid darkgray;
   background: darksalmon;
   padding: 10px;
@@ -47,7 +54,8 @@ $button-border-color: gray;
       width: 23.5%;
       text-align: center;
       font-size: 0.9em;
-      box-shadow: 1px 1px 2px black;
+      box-shadow: $button-shadow;
+      background-color: $button-background;
     }
   }
 
@@ -56,12 +64,6 @@ $button-border-color: gray;
     height: 100%;
     display: inline-block;
     text-align: center;
-
-    .number-field {
-      height: 42px;
-      color: darkgray;
-      font-family: sans-serif;
-    }
 
     .num-shell {
       text-align: center;
@@ -78,7 +80,8 @@ $button-border-color: gray;
         display: table;
         float: right;
         margin: 2px;
-        box-shadow: 1px 1px 2px black;
+        box-shadow: $button-shadow;
+        background-color: $button-background;
 
         div {
           display: table-cell;
@@ -102,9 +105,10 @@ $button-border-color: gray;
     -webkit-appearance: slider-vertical;
     height: 220px;
     width: 100%;
+    margin: 8px 0;
   }
 
-  input#area, .number-field {
+  input#area, input#importance {
     margin: 10px 0;
     background-color: white;
     width: 100%;
@@ -126,17 +130,56 @@ $button-border-color: gray;
       border: 1px solid $button-border-color;
       padding: 4px;
       margin: 2px;
-      box-shadow: 1px 1px 2px black;
+      box-shadow: $button-shadow;
+      background-color: $button-background;
     }
   }
 
   .screen {
-    margin: 15px 0 0;
+    display: inline-block;
+    text-align: center;
+    width: 86%;
+    margin: 15px 0;
     border: 1px solid lightgray;
     background: gainsboro;
-    padding: 10px 5px;
+    padding: 10px 20px;
     font-size: 1.2em;
     font-family: 'Courier New';
     text-align: right;
+  }
+
+  .calculate {
+    text-align: center;
+    display: inline-block;
+    width: 95%;
+    border: 1px solid $button-border-color;
+    box-shadow: $button-shadow;
+    background-color: $button-background;
+    padding: 10px;
+    margin: 10px 0 0;
+  }
+}
+
+.error {
+  display: none;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: white;
+  width: 300px;
+  height: 200px;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  position: fixed;
+  text-align: center;
+
+  p, h2, button {
+    padding: 5px;
+  }
+
+  button {
+    margin-top: 10px;
   }
 }

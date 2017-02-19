@@ -17,12 +17,12 @@
         <li class="area-example">Leisure</li>
         <li class="area-example">Education</li>
       </ul>
-
   </fieldset>
   <div class="second-part">
     <fieldset class="importance-field">
+      <div class="cover"></div>
       <p>2. Input the importance this area has in your life:</p>
-      <div class="number-field">From 1 to 10</div>
+      <%= text_field_tag 'importance', nil, placeholder: 'From 1 to 10' %>
       <%= render 'numbers' %>
     </fieldset>
     <fieldset class="satisfaction-field">
@@ -33,7 +33,11 @@
   </div>
   <% end %>
   <div class="enter-field">
-    <div class="dock">4. <span id="add">ADD</span> it into the calculator below!</div>
+    <div class="dock">4. <span id="add">ADD</span> it to the calculator below.</div>
     <div class="screen">...</div>
+    <p>Repeat this for all the areas of your life that are important to you...</p>
+  </div>
+  <div class="calculate-field">
+    <div class="calculate">...and CALCULATE when you're ready!</div>
   </div>
 </div>
