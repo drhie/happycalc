@@ -15,7 +15,7 @@ $(document).ready( function() {
   $('.intro, .start').fadeIn();
 
   $('.start button').on('click', function() {
-    currentSession = Math.random().toFixed(10);
+    currentSession = parseFloat(Math.random().toFixed(10));
     // console.log(currentSession);
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
@@ -139,14 +139,14 @@ $(document).ready( function() {
         $('#least').html(least.toUpperCase())
         $('.screen').append("<br>= " + totalSatisfaction.toFixed(1));
         $('.results').fadeIn();
-        generateFeedback(totalSatisfaction)
-        $.ajax({
-          url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-          // url: 'http://localhost:3000/delete_all',
-          method: 'DELETE'
-        });
+        generateFeedback(totalSatisfaction);
+        // $.ajax({
+        //   url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+        //   // url: 'http://localhost:3000/delete_all',
+        //   method: 'DELETE'
+        // });
         reset();
-        currentSession = Math.random().toFixed(10);
+        currentSession = parseFloat(Math.random().toFixed(10));
         // console.log(currentSession);
       });
     } else {
