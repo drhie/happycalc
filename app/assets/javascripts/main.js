@@ -176,9 +176,9 @@ $(document).ready( function() {
     } else if (totalSatisfaction < 73 && totalSatisfaction >= 62) {
       $('#feedback').html("You're generally satisfied with life, but there's stuff you want changed.");
     } else if (totalSatisfaction < 62 && totalSatisfaction >= 50) {
-      $('#feedback').html("You're unsatisfied with life. We hope you seek out help beyond HappyCalc.");
+      $('#feedback').html("You're pretty unhappy with life. We hope you seek out help beyond HappyCalc.");
     } else {
-      $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in the community.");
+      $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in your community.");
     }
   }
 
