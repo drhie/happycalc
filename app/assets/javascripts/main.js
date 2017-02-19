@@ -113,13 +113,13 @@ $(document).ready( function() {
         var totalImportance = 0;
         var totalSatisfaction = 0
         var mostLeast = {}
-        data.forEach(function(object) {
+        data[0].forEach(function(object) {
           // console.log(object.session_id, currentSession);
           if (object.session_id === currentSession) {
             totalImportance += object.importance;
           }
         });
-        data.forEach(function(object) {
+        data[0].forEach(function(object) {
           if (object.session_id === currentSession) {
             var weightedImportance = object.importance / totalImportance;
             var satisfaction = (object.satisfaction / 20) * 100;
