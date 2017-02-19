@@ -20,8 +20,8 @@ $(document).ready( function() {
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
     $.ajax({
-      url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-      // url: 'http://localhost:3000/delete_all',
+      // url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+      url: 'http://localhost:3000/delete_all',
       method: 'DELETE'
     });
   })
@@ -73,8 +73,8 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        url: 'http://polar-shore-16234.herokuapp.com/areas.json',
-        // url: 'http://localhost:3000/areas',
+        // url: 'http://polar-shore-16234.herokuapp.com/areas.json',
+        url: 'http://localhost:3000/areas.json',
         method: 'POST',
         data: {
           "area": {
@@ -107,8 +107,8 @@ $(document).ready( function() {
       $.ajax({
         url: 'http://polar-shore-16234.herokuapp.com/',
         // url: 'http://localhost:3000/',
-        method: 'GET',
         dataType: 'json',
+        method: 'GET',
       }).done(function(data) {
         var totalImportance = 0;
         var totalSatisfaction = 0
@@ -126,7 +126,7 @@ $(document).ready( function() {
             weightedSatisfaction = (satisfaction * weightedImportance);
             totalSatisfaction += weightedSatisfaction
             mostLeast[weightedSatisfaction] = object.name;
-            // console.log(object.name, weightedSatisfaction)
+            console.log(object.name, weightedSatisfaction)
           }
         });
         $('#score').html(totalSatisfaction.toFixed(1));
