@@ -118,7 +118,7 @@ html {
     vertical-align: top;
     height: 100%;
     float: right;
-    padding: 10px 5px;
+    padding: 10px 3px;
   }
 
   input#satisfaction {
@@ -130,7 +130,6 @@ html {
 
   input#area, input#importance {
     margin: 10px 0;
-    background-color: white;
     width: 100%;
     text-align: center;
     border: none;
@@ -148,7 +147,7 @@ html {
 
     span {
       border: 1px solid $button-border-color;
-      padding: 4px;
+      padding: 5px 8px;
       margin: 2px;
       box-shadow: $button-shadow;
       background-color: $button-background;
@@ -209,6 +208,10 @@ html {
 .start {
   height: 250px;
   margin-top: -125px;
+}
+
+.results {
+  width: 400px;
 }
 
 footer {

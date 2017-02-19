@@ -59,7 +59,7 @@ $(document).ready( function() {
 
   var slider = $('input#satisfaction');
   slider.on("input", function() {
-    $('.output').html("I'm <strong>" + Math.floor((this.value/20)*100) + '%</strong> happy about it.');
+    $('.output').html("I'm <strong>" + Math.floor((this.value/20)*100) + '%</strong> happy about this!');
   })
 
   $('#add').on('click', function() {
@@ -102,26 +102,30 @@ $(document).ready( function() {
         method: 'GET',
         dataType: 'json',
       }).done(function(data) {
-        var total_importance = 0;
-        var total_satisfaction = 0
-        var most_least = {}
+        var totalImportance = 0;
+        var totalSatisfaction = 0
+        var mostLeast = {}
         data.forEach(function(object) {
-          total_importance += object.importance;
+          totalImportance += object.importance;
         });
         data.forEach(function(object) {
-          var weighted_importance = object.importance / total_importance;
+          var weightedImportance = object.importance / totalImportance;
           var satisfaction = (object.satisfaction / 20) * 100;
-          weighted_satisfaction = (satisfaction * weighted_importance);
-          total_satisfaction += weighted_satisfaction
-          most_least[weighted_satisfaction] = object.name;
+          weightedSatisfaction = (satisfaction * weightedImportance);
+          totalSatisfaction += weightedSatisfaction
+          mostLeast[weightedSatisfaction] = object.name;
+          console.log(object.name, weightedSatisfaction)
         });
-        $('#score').html(total_satisfaction.toFixed(1));
-        var most = most_least[Object.keys(most_least).sort()[Object.keys(most_least).length-1]];
-        var least = most_least[Object.keys(most_least).sort()[0]];
+        $('#score').html(totalSatisfaction.toFixed(1));
+        var highest_number = Math.max.apply(Math, (Object.keys(mostLeast)))
+        var lowest_number = Math.min.apply(Math, (Object.keys(mostLeast)))
+        var most = mostLeast[highest_number];
+        var least = mostLeast[lowest_number];
         $('#most').html(most.toUpperCase());
         $('#least').html(least.toUpperCase())
-        $('.screen').append("<br>= " + total_satisfaction.toFixed(1));
+        $('.screen').append("<br>= " + totalSatisfaction.toFixed(1));
         $('.results').fadeIn();
+        generateFeedback(totalSatisfaction)
         $.ajax({
           url: 'http://localhost:3000/delete_all',
           method: 'DELETE'
@@ -145,6 +149,20 @@ $(document).ready( function() {
   $('.calculate-error button').on('click', function() {
     $('.calculate-error').fadeOut();
   })
+
+  var generateFeedback = function(totalSatisfaction) {
+    if (totalSatisfaction >= 85) {
+      $('#feedback').html("Wow! Life is going great for you! Keep it up!");
+    } else if (totalSatisfaction < 85 && totalSatisfaction >= 70) {
+      $('#feedback').html("Life is good! Continue to cultivate good perspective and good habits!");
+    } else if (totalSatisfaction < 70 && totalSatisfaction >= 60) {
+      $('#feedback').html("You're generally satisfied with life, but there's stuff you want changed.");
+    } else if (totalSatisfaction < 60 && totalSatisfaction >= 50) {
+      $('#feedback').html("You're unsatisfied with life. We hope you seek out help beyond HappyCalc.");
+    } else {
+      $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in the community.");
+    }
+  }
 
   var reset = function() {
     $('input#area').val("");

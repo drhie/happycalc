@@ -1,24 +1,12 @@
-# README
+#HappyCalc
+This app is deployed at the following address:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a calculator web app meant to reinforce lessons pertaining to JavaScript interactivity, DOM manipulation and AJAX requests. All the work is done through requests made with $.ajax, and the calculations happen almost entirely through JavaScript and JSON. Since much of my interest thus far has been in back-end development, this was also an attempt at improving my front-end skills, particularly with Sass, and becoming a more skilled front-end developer.
 
-Things you may want to cover:
+FURTHER THINGS TO BUILD ON:
 
-* Ruby version
+1) Expand on responsive web design for tablets and desktops.
 
-* System dependencies
+2) Include more variation in the presentation of the data results.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3) Add more JavaScript interactivity.
