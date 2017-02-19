@@ -17,7 +17,7 @@ $(document).ready( function() {
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
     $.ajax({
-      url: 'http://localhost:3000/delete_all',
+      url: 'http://polar-shore-16234.herokuapp.com/delete_all',
       method: 'DELETE'
     });
   })
@@ -69,7 +69,7 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        url: 'http://localhost:3000/areas',
+        url: 'http://polar-shore-16234.herokuapp.com/areas',
         method: 'POST',
         data: {
           "area": {
@@ -98,7 +98,7 @@ $(document).ready( function() {
   $('#calculate').on('click', function() {
     if ($('.screen').html() !== "...") {
       $.ajax({
-        url: 'http://localhost:3000/',
+        url: 'http://polar-shore-16234.herokuapp.com/',
         method: 'GET',
         dataType: 'json',
       }).done(function(data) {
@@ -127,7 +127,7 @@ $(document).ready( function() {
         $('.results').fadeIn();
         generateFeedback(totalSatisfaction)
         $.ajax({
-          url: 'http://localhost:3000/delete_all',
+          url: 'http://polar-shore-16234.herokuapp.com/delete_all',
           method: 'DELETE'
         });
         reset();
@@ -153,11 +153,11 @@ $(document).ready( function() {
   var generateFeedback = function(totalSatisfaction) {
     if (totalSatisfaction >= 85) {
       $('#feedback').html("Wow! Life is going great for you! Keep it up!");
-    } else if (totalSatisfaction < 85 && totalSatisfaction >= 70) {
+    } else if (totalSatisfaction < 85 && totalSatisfaction >= 73) {
       $('#feedback').html("Life is good! Continue to cultivate good perspective and good habits!");
-    } else if (totalSatisfaction < 70 && totalSatisfaction >= 60) {
+    } else if (totalSatisfaction < 73 && totalSatisfaction >= 65) {
       $('#feedback').html("You're generally satisfied with life, but there's stuff you want changed.");
-    } else if (totalSatisfaction < 60 && totalSatisfaction >= 50) {
+    } else if (totalSatisfaction < 65 && totalSatisfaction >= 50) {
       $('#feedback').html("You're unsatisfied with life. We hope you seek out help beyond HappyCalc.");
     } else {
       $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in the community.");
