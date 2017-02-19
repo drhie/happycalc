@@ -9,15 +9,19 @@ $(document).ready( function() {
   var name;
   var importance;
   var satisfaction;
+  var currentSession;
   $('body').css('cursor', 'pointer');
   $('html, body').css({ overflow: 'hidden', height: '100%' });
   $('.intro, .start').fadeIn();
 
   $('.start button').on('click', function() {
+    currentSession = Math.random();
+    // console.log(currentSession);
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
     $.ajax({
-      url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+      // url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+      url: 'http://localhost:3000/delete_all',
       method: 'DELETE'
     });
   })
@@ -69,16 +73,19 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        url: 'http://polar-shore-16234.herokuapp.com/areas',
+        // url: 'http://polar-shore-16234.herokuapp.com/areas',
+        url: 'http://localhost:3000/areas',
         method: 'POST',
         data: {
           "area": {
             "name": name,
             "importance": parseInt(importance),
-            "satisfaction": parseInt(satisfaction)
+            "satisfaction": parseInt(satisfaction),
+            "session_id": currentSession,
           },
         }
       }).done(function(data) {
+        // console.log(data);
         if ($('input#area').val() !== "") {
           if($('.screen').html() === "...") {
             $('.screen').html("(" + $('input#area').val().toLowerCase() + ")");
@@ -98,7 +105,8 @@ $(document).ready( function() {
   $('#calculate').on('click', function() {
     if ($('.screen').html() !== "...") {
       $.ajax({
-        url: 'http://polar-shore-16234.herokuapp.com/',
+        // url: 'http://polar-shore-16234.herokuapp.com/',
+        url: 'http://localhost:3000/',
         method: 'GET',
         dataType: 'json',
       }).done(function(data) {
@@ -106,31 +114,40 @@ $(document).ready( function() {
         var totalSatisfaction = 0
         var mostLeast = {}
         data.forEach(function(object) {
-          totalImportance += object.importance;
+          // console.log(object.session_id, currentSession);
+          if (object.session_id === currentSession) {
+            totalImportance += object.importance;
+          }
         });
         data.forEach(function(object) {
-          var weightedImportance = object.importance / totalImportance;
-          var satisfaction = (object.satisfaction / 20) * 100;
-          weightedSatisfaction = (satisfaction * weightedImportance);
-          totalSatisfaction += weightedSatisfaction
-          mostLeast[weightedSatisfaction] = object.name;
-          console.log(object.name, weightedSatisfaction)
+          if (object.session_id === currentSession) {
+            var weightedImportance = object.importance / totalImportance;
+            var satisfaction = (object.satisfaction / 20) * 100;
+            weightedSatisfaction = (satisfaction * weightedImportance);
+            totalSatisfaction += weightedSatisfaction
+            mostLeast[weightedSatisfaction] = object.name;
+            // console.log(object.name, weightedSatisfaction)
+          }
         });
         $('#score').html(totalSatisfaction.toFixed(1));
         var highest_number = Math.max.apply(Math, (Object.keys(mostLeast)))
         var lowest_number = Math.min.apply(Math, (Object.keys(mostLeast)))
         var most = mostLeast[highest_number];
         var least = mostLeast[lowest_number];
+        debugger;
         $('#most').html(most.toUpperCase());
         $('#least').html(least.toUpperCase())
         $('.screen').append("<br>= " + totalSatisfaction.toFixed(1));
         $('.results').fadeIn();
         generateFeedback(totalSatisfaction)
-        $.ajax({
-          url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-          method: 'DELETE'
-        });
+        // $.ajax({
+        //   // url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+        //   url: 'http://localhost:3000/delete_all',
+        //   method: 'DELETE'
+        // });
         reset();
+        currentSession = Math.random();
+        // console.log(currentSession);
       });
     } else {
       $('.calculate-error').fadeIn();
