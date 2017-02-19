@@ -114,7 +114,7 @@ $(document).ready( function() {
         var totalSatisfaction = 0
         var mostLeast = {}
         data.forEach(function(object) {
-          console.log(object.session_id, currentSession);
+          // console.log(object.session_id, currentSession);
           if (object.session_id === currentSession) {
             totalImportance += object.importance;
           }
@@ -126,7 +126,7 @@ $(document).ready( function() {
             weightedSatisfaction = (satisfaction * weightedImportance);
             totalSatisfaction += weightedSatisfaction
             mostLeast[weightedSatisfaction] = object.name;
-            console.log(object.name, weightedSatisfaction)
+            // console.log(object.name, weightedSatisfaction)
           }
         });
         $('#score').html(totalSatisfaction.toFixed(1));
