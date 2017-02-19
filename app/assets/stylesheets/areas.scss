@@ -29,6 +29,18 @@ html {
   width: 100%;
 }
 
+.example {
+  padding: 5px;
+  border: 1px solid $button-border-color;
+  display: inline-block;
+  margin: 5px 0;
+  width: 65px;
+  text-align: center;
+  font-size: 0.9em;
+  box-shadow: $button-shadow;
+  background-color: $button-background;
+}
+
 .calculator {
   display: inline-block;
   border-radius: 0px;
@@ -148,7 +160,7 @@ html {
     text-align: right;
   }
 
-  .calculate {
+  #calculate {
     text-align: center;
     display: inline-block;
     width: 95%;
@@ -160,7 +172,7 @@ html {
   }
 }
 
-.error {
+.error, .results {
   display: none;
   border: 2px solid black;
   border-radius: 5px;
@@ -182,4 +194,12 @@ html {
   button {
     margin-top: 10px;
   }
+}
+
+footer {
+  text-align: right;
+  padding: 10px;
+  background: black;
+  width: 100%;
+  color: white;
 }

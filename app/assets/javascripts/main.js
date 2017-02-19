@@ -10,8 +10,9 @@ $(document).ready( function() {
   var importance;
   var satisfaction;
   $('input#importance').attr('readonly', true);
+  $('body').css('cursor', 'pointer');
 
-  $('.area-example, #add').hover(function() {
+  $('.area-example, .num-button, .clear-button, .sub-button, #add, #calculate').hover(function() {
     $(this).css('border', '1px solid yellow').css('font-weight', '900');
   }, function() {
     $(this).css('border', '1px solid gray').css('font-weight', '500');
@@ -21,14 +22,6 @@ $(document).ready( function() {
     var field = ($(this).html());
     $('.name-field input[type="text"]').val(field);
   })
-
-  $('.num-button, .sub-button, .clear-button, .calculate').hover(function() {
-    $(this).css('border', '1px solid yellow');
-    $(this).css('font-weight', '900');
-  }, function() {
-    $(this).css('border', '1px solid gray');
-    $(this).css('font-weight', '500');
-  });
 
   $('.num-button').on('click', function(){
     var re = /\d/;
@@ -54,7 +47,7 @@ $(document).ready( function() {
     var name = $('input#area').val();
     var importance = $('input#importance').val();
     var satisfaction = $('input#satisfaction').val();
-    if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!")) {
+    if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
         url: 'http://localhost:3000/areas',
@@ -83,13 +76,48 @@ $(document).ready( function() {
     }
   });
 
+  $('#calculate').on('click', function() {
+    if ($('.screen').html() !== "...") {
+      $.ajax({
+        url: 'http://localhost:3000/',
+        method: 'GET',
+        dataType: 'json',
+      }).done(function(data) {
+        var total_importance = 0;
+        var total_satisfaction = 0
+        var most_least = {}
+        data.forEach(function(object) {
+          total_importance += object.importance;
+        });
+        data.forEach(function(object) {
+          var weighted_importance = object.importance / total_importance;
+          var satisfaction = (object.satisfaction / 20) * 100;
+          weighted_satisfaction = (satisfaction * weighted_importance);
+          total_satisfaction += weighted_satisfaction
+          most_least[weighted_satisfaction] = object.name;
+        });
+        $('#score').html(total_satisfaction.toFixed(0));
+        var most = most_least[Object.keys(most_least).sort()[Object.keys(most_least).length-1]];
+        var least = most_least[Object.keys(most_least).sort()[0]];
+        $('#most').html(most);
+        $('#least').html(least);
+        $('.results').fadeIn();
+        
+      });
+    }
+  });
+
+  $('.results button').on('click', function() {
+    $('.results').fadeOut();
+  })
+
   $('.error button').on('click', function() {
     $('.error').fadeOut();
   })
 
   var reset = function() {
     $('input#area').val("");
-    $('.number-field').html("From 1 to 10").css('color', 'darkgray');
+    $('input#importance').val("");
     $('.output').html("Move the slider!");
   }
 });

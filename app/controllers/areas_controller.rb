@@ -2,6 +2,14 @@ class AreasController < ApplicationController
   def index
     @area = Area.new
     @areas = Area.all
+    respond_to do |format|
+      format.html do
+        render :index
+      end
+      format.json do
+        render json: @areas
+      end
+    end
   end
 
   def new

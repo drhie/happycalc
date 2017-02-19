@@ -12,8 +12,15 @@
   <body>
     <div class="error">
       <h2>It looks like the calculator coudn't add your stuff!</h2>
-      <p>Make sure you put in a unique area for step 1, and set values for 2 and 3 before you click add!</p>
+      <p>Make sure you put in a <em>unique</em> area for step 1, and set values for 2 and 3 before you click "ADD"!</p>
       <button>ALL RIGHT, THEN.</button>
+    </div>
+
+    <div class="results">
+      <h2>You're <strong><span id="score"></span>%</strong> satisfied with your life!</h2>
+      <p><strong><span id="most"></span></strong> is what you get the most happiness from, whereas
+      <strong><span id="least"></span></strong> is what you're least satisfied with right now.</p>
+      <button>GOT IT!</button>
     </div>
     <div class="shell">
       <%= yield %>
@@ -21,5 +28,8 @@
     <div style="height: 10%">
       <%= console %>
     </div>
+    <footer>
+      <p>This is a David Rhie web app</p>
+    </footer>
   </body>
 </html>
