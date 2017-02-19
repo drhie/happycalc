@@ -6,6 +6,7 @@
 // })
 
 $(document).ready( function() {
+  $('input#satisfaction').attr('orient', 'vertical');
   var name;
   var importance;
   var satisfaction;

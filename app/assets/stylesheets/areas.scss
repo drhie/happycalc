@@ -122,6 +122,7 @@ html {
   }
 
   input#satisfaction {
+    writing-mode: bt-lr;
     -webkit-appearance: slider-vertical;
     height: 220px;
     width: 100%;
@@ -211,7 +212,10 @@ html {
 }
 
 .results {
-  width: 400px;
+  width: 320px;
+  margin-left: -160px;
+  height: 220px;
+  margin-top: -110px;
 }
 
 footer {
