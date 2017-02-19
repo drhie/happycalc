@@ -73,8 +73,8 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        url: 'http://polar-shore-16234.herokuapp.com/areas.json',
-        // url: 'http://localhost:3000/areas.json',
+        url: 'http://polar-shore-16234.herokuapp.com/areas',
+        // url: 'http://localhost:3000/areas',
         method: 'POST',
         data: {
           "area": {
@@ -113,13 +113,13 @@ $(document).ready( function() {
         var totalImportance = 0;
         var totalSatisfaction = 0
         var mostLeast = {}
-        data[0].forEach(function(object) {
+        data.forEach(function(object) {
           // console.log(object.session_id, currentSession);
           if (object.session_id === currentSession) {
             totalImportance += object.importance;
           }
         });
-        data[0].forEach(function(object) {
+        data.forEach(function(object) {
           if (object.session_id === currentSession) {
             var weightedImportance = object.importance / totalImportance;
             var satisfaction = (object.satisfaction / 20) * 100;
