@@ -155,9 +155,9 @@ $(document).ready( function() {
       $('#feedback').html("Wow! Life is going great for you! Keep it up!");
     } else if (totalSatisfaction < 85 && totalSatisfaction >= 73) {
       $('#feedback').html("Life is good! Continue to cultivate good perspective and good habits!");
-    } else if (totalSatisfaction < 73 && totalSatisfaction >= 65) {
+    } else if (totalSatisfaction < 73 && totalSatisfaction >= 62) {
       $('#feedback').html("You're generally satisfied with life, but there's stuff you want changed.");
-    } else if (totalSatisfaction < 65 && totalSatisfaction >= 50) {
+    } else if (totalSatisfaction < 62 && totalSatisfaction >= 50) {
       $('#feedback').html("You're unsatisfied with life. We hope you seek out help beyond HappyCalc.");
     } else {
       $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in the community.");
