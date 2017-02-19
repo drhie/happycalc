@@ -20,8 +20,8 @@ $(document).ready( function() {
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
     $.ajax({
-      // url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-      url: 'http://localhost:3000/delete_all',
+      url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+      // url: 'http://localhost:3000/delete_all',
       method: 'DELETE'
     });
   })
@@ -73,8 +73,8 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        // url: 'http://polar-shore-16234.herokuapp.com/areas',
-        url: 'http://localhost:3000/areas',
+        url: 'http://polar-shore-16234.herokuapp.com/areas',
+        // url: 'http://localhost:3000/areas',
         method: 'POST',
         data: {
           "area": {
@@ -105,8 +105,8 @@ $(document).ready( function() {
   $('#calculate').on('click', function() {
     if ($('.screen').html() !== "...") {
       $.ajax({
-        // url: 'http://polar-shore-16234.herokuapp.com/',
-        url: 'http://localhost:3000/',
+        url: 'http://polar-shore-16234.herokuapp.com/',
+        // url: 'http://localhost:3000/',
         method: 'GET',
         dataType: 'json',
       }).done(function(data) {
