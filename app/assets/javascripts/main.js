@@ -102,7 +102,13 @@ $(document).ready( function() {
         $('#most').html(most);
         $('#least').html(least);
         $('.results').fadeIn();
-        
+        $.ajax({
+          url: 'http://localhost:3000/delete_all',
+          method: 'DELETE'
+        }).done(function(data) {
+          console.log(data);
+          console.log("Deleted!");
+        });
       });
     }
   });

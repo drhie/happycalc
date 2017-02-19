@@ -31,6 +31,10 @@ class AreasController < ApplicationController
     @area = Area.find(params[:id])
   end
 
+  def destroy
+    Area.delete_all
+  end
+
   def area_params
     params.require(:area).permit(:name, :importance, :satisfaction)
   end
