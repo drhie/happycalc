@@ -21,12 +21,20 @@ html {
 
 .title {
   font-family: "Caveat Brush";
-  font-size: 2.5em;
+  font-size: 3.5em;
 }
 
 .shell {
   text-align: center;
   width: 100%;
+}
+
+.intro {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  display: none;
 }
 
 .example {
@@ -172,7 +180,7 @@ html {
   }
 }
 
-.error, .results {
+.error, .results, .start {
   display: none;
   border: 2px solid black;
   border-radius: 5px;
@@ -188,12 +196,19 @@ html {
   text-align: center;
 
   p, h2, button {
-    padding: 5px;
+    padding: 5px 5px;
   }
 
   button {
-    margin-top: 10px;
+    margin: 10px 0;
+    font-family: "Caveat Brush";
+    font-size: 1.1em;
   }
+}
+
+.start {
+  height: 250px;
+  margin-top: -125px;
 }
 
 footer {

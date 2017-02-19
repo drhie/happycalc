@@ -1,12 +1,7 @@
-<h1 class="title">Life Satisfaction Calculator</h1>
-<p>Calculate how satisfied you are with your life by using the calculator below.</p>
-<p>This app is a web app that functions primarily on AJAX requests and JavaScript interactivity.</p>
-<p>Click on the <span class="example">buttons</span> to use the calculator!</p>
-
 <div class="calculator">
   <fieldset class="name-field">
     <%= form_tag('/', method: :post) do %>
-      <p>1. Enter an area in your life that you value:</p>
+      <p>1. Enter an area of your life that you value:</p>
       <%= text_field_tag 'area', nil, placeholder: 'Enter an area' %>
       <p>Or click one of the options below:</p>
       <ul>
@@ -28,7 +23,7 @@
       <%= render 'numbers' %>
     </fieldset>
     <fieldset class="satisfaction-field">
-      <p>3. Gauge how happy you are in this area:</p>
+      <p>3. Gauge your satisfaction in this area:</p>
       <%= range_field_tag 'satisfaction', nil, within: 0..20 %>
       <div class="output">Move the slider!</div>
     </fieldset>

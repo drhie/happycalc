@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LifeSatisfactionCalculator</title>
+    <title>Happy Calc</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <div class="intro">
+      <div class="start">
+        <h2>Welcome to HappyCalc!</h2>
+        <p>HappyCalc takes all the areas of your life that are important to you, and crunches them into data that shows how happy (or unhappy!) you are.</p>
+        <p>This is a web app used to practice AJAX requests and JavaScript interactivity.</p>
+        <button>START</button>
+      </div>
+    </div>
+
     <div class="error">
       <h2>It looks like the calculator coudn't add your stuff!</h2>
       <p>Make sure you put in a <em>unique</em> area for step 1, and set values for 2 and 3 before you click "ADD"!</p>
@@ -23,10 +32,9 @@
       <button>GOT IT!</button>
     </div>
     <div class="shell">
+      <h1 class="title">HappyCalc</h1>
+      <p>Click on the <span class="example">buttons</span> to use the calculator!</p>
       <%= yield %>
-    </div>
-    <div style="height: 10%">
-      <%= console %>
     </div>
     <footer>
       <p>This is a David Rhie web app</p>

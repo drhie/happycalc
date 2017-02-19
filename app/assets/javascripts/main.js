@@ -9,9 +9,20 @@ $(document).ready( function() {
   var name;
   var importance;
   var satisfaction;
-  $('input#importance').attr('readonly', true);
   $('body').css('cursor', 'pointer');
+  $('html, body').css({ overflow: 'hidden', height: '100%' });
+  $('.intro, .start').fadeIn();
 
+  $('.start button').on('click', function() {
+    $('html, body').css({ overflow: 'auto', height: 'auto' });
+    $('.intro, .start').fadeOut();
+    $.ajax({
+      url: 'http://localhost:3000/delete_all',
+      method: 'DELETE'
+    });
+  })
+
+  $('input#importance').attr('readonly', true);
   $('.area-example, .num-button, .clear-button, .sub-button, #add, #calculate').hover(function() {
     $(this).css('border', '1px solid yellow').css('font-weight', '900');
   }, function() {
@@ -96,25 +107,25 @@ $(document).ready( function() {
           total_satisfaction += weighted_satisfaction
           most_least[weighted_satisfaction] = object.name;
         });
-        $('#score').html(total_satisfaction.toFixed(0));
+        $('#score').html(total_satisfaction.toFixed(1));
         var most = most_least[Object.keys(most_least).sort()[Object.keys(most_least).length-1]];
         var least = most_least[Object.keys(most_least).sort()[0]];
         $('#most').html(most);
-        $('#least').html(least);
+        $('#least').html(least)
+        $('.screen').append("<br>= " + total_satisfaction.toFixed(1));
         $('.results').fadeIn();
         $.ajax({
           url: 'http://localhost:3000/delete_all',
           method: 'DELETE'
-        }).done(function(data) {
-          console.log(data);
-          console.log("Deleted!");
         });
+        reset();
       });
     }
   });
 
   $('.results button').on('click', function() {
     $('.results').fadeOut();
+    $('.screen').html("...");
   })
 
   $('.error button').on('click', function() {
