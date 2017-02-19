@@ -114,7 +114,7 @@ $(document).ready( function() {
         var totalSatisfaction = 0
         var mostLeast = {}
         data.forEach(function(object) {
-          // console.log(object.session_id, currentSession);
+          console.log(object.session_id, currentSession);
           if (object.session_id === currentSession) {
             totalImportance += object.importance;
           }
@@ -140,11 +140,11 @@ $(document).ready( function() {
         $('.screen').append("<br>= " + totalSatisfaction.toFixed(1));
         $('.results').fadeIn();
         generateFeedback(totalSatisfaction)
-        // $.ajax({
-        //   // url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-        //   url: 'http://localhost:3000/delete_all',
-        //   method: 'DELETE'
-        // });
+        $.ajax({
+          url: 'http://polar-shore-16234.herokuapp.com/delete_all',
+          // url: 'http://localhost:3000/delete_all',
+          method: 'DELETE'
+        });
         reset();
         currentSession = Math.random();
         // console.log(currentSession);
