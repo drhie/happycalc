@@ -23,10 +23,18 @@ $(document).ready( function() {
   })
 
   $('input#importance').attr('readonly', true);
-  $('.area-example, .num-button, .clear-button, .sub-button, #add, #calculate').hover(function() {
+  $('.area-example, .num-button, .example, .clear-button, .sub-button, #add, #calculate').hover(function() {
     $(this).css('border', '1px solid yellow').css('font-weight', '900');
   }, function() {
     $(this).css('border', '1px solid gray').css('font-weight', '500');
+  });
+
+  $('.area-example, .num-button, .example, .clear-button, .sub-button, #add, #calculate')
+  .mousedown(function(){
+    $(this).css('box-shadow', 'inset 1px 1px 2px black');
+  })
+  .mouseup(function() {
+    $(this).css('box-shadow', '1px 1px 2px black');
   });
 
   $('.area-example').on('click', function() {
@@ -110,8 +118,8 @@ $(document).ready( function() {
         $('#score').html(total_satisfaction.toFixed(1));
         var most = most_least[Object.keys(most_least).sort()[Object.keys(most_least).length-1]];
         var least = most_least[Object.keys(most_least).sort()[0]];
-        $('#most').html(most);
-        $('#least').html(least)
+        $('#most').html(most.toUpperCase());
+        $('#least').html(least.toUpperCase())
         $('.screen').append("<br>= " + total_satisfaction.toFixed(1));
         $('.results').fadeIn();
         $.ajax({
@@ -120,6 +128,8 @@ $(document).ready( function() {
         });
         reset();
       });
+    } else {
+      $('.calculate-error').fadeIn();
     }
   });
 
@@ -130,6 +140,10 @@ $(document).ready( function() {
 
   $('.error button').on('click', function() {
     $('.error').fadeOut();
+  })
+
+  $('.calculate-error button').on('click', function() {
+    $('.calculate-error').fadeOut();
   })
 
   var reset = function() {

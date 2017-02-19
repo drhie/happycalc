@@ -21,19 +21,25 @@
 
     <div class="error">
       <h2>It looks like the calculator coudn't add your stuff!</h2>
-      <p>Make sure you put in a <em>unique</em> area for step 1, and set values for 2 and 3 before you click "ADD"!</p>
-      <button>ALL RIGHT, THEN.</button>
+      <p>Make sure you put in a <em>unique</em> area for step 1, and set values for 2 and 3 before you press the [ADD] button!</p>
+      <button>OKAY</button>
+    </div>
+
+    <div class="calculate-error">
+      <h2>You haven't added anything to the calculator!</h2>
+      <p>Do steps 1 through 4 to put something into the calculator before you press the [CALCULATE] button!</p>
+      <button>OKAY</button>
     </div>
 
     <div class="results">
-      <h2>You're <strong><span id="score"></span>%</strong> satisfied with your life!</h2>
+      <h2>You are <strong><span id="score"></span>%</strong> satisfied with your life!</h2>
       <p><strong><span id="most"></span></strong> is what you get the most happiness from, whereas
       <strong><span id="least"></span></strong> is what you're least satisfied with right now.</p>
       <button>GOT IT!</button>
     </div>
     <div class="shell">
       <h1 class="title">HappyCalc</h1>
-      <p>Click on the <span class="example">buttons</span> to use the calculator!</p>
+      <p>Press the <span class="example">buttons</span> to use the calculator!</p>
       <%= yield %>
     </div>
     <footer>

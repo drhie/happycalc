@@ -180,7 +180,7 @@ html {
   }
 }
 
-.error, .results, .start {
+.error, .results, .start, .calculate-error {
   display: none;
   border: 2px solid black;
   border-radius: 5px;
@@ -212,9 +212,8 @@ html {
 }
 
 footer {
-  text-align: right;
+  text-align: center;
   padding: 10px;
-  background: black;
   width: 100%;
-  color: white;
+  color: black;
 }
