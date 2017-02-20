@@ -83,6 +83,10 @@ html {
       display: none;
     }
 
+    .laptop {
+      display: none
+    }
+
     .desktop {
       display: none;
     }
@@ -263,6 +267,7 @@ footer {
 
         .area-example {
           width: 19%;
+          font-size: 1em;
         }
 
         .tablet {
@@ -386,7 +391,7 @@ footer {
     background: darksalmon;
 
     .tablet-part {
-      height: 460px;
+      height: 480px;
       width: 95%;
       display: inline-block;
       background: darksalmon;
@@ -405,7 +410,7 @@ footer {
           width: 48%;
         }
 
-        .desktop {
+        .laptop {
           display: inline-block;
         }
 
@@ -413,7 +418,6 @@ footer {
       }
 
       .second-part {
-        width: auto;
 
         .importance-field {
           p {
@@ -423,7 +427,7 @@ footer {
 
         .satisfaction-field {
           border-color: white;
-          height: 460px;
+          height: 480px;
         }
       }
 
@@ -447,4 +451,42 @@ footer {
 
     }
   }
+}
+
+@media (min-width: 1400px) {
+  .calculator {
+    .tablet-part {
+      .name-field {
+        width: 400px;
+
+        .option {
+          font-size: 1em;
+        }
+
+        input#area {
+          width: 90%;
+        }
+
+        .area-example {
+          padding: 10px 0;
+          width: 30%;
+        }
+
+        .desktop {
+          display: inline-block;
+        }
+      }
+      .second-part {
+        width: 360px;
+        .importance-field {
+          width: 225px;
+          .num-button, .clear-button {
+            height: 62.5px;
+            width: 62.5px;
+          }
+        }
+      }
+    }
+  }
+
 }
