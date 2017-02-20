@@ -153,6 +153,11 @@ html {
     font-size: 1.2em;
   }
 
+  input#importance {
+    background-color: lightcyan;
+    border-radius: 30px
+  }
+
   .second-part {
     height: 350px;
   }
@@ -410,6 +415,12 @@ footer {
       .second-part {
         width: auto;
 
+        .importance-field {
+          p {
+            margin-bottom: 20px;
+          }
+        }
+
         .satisfaction-field {
           border-color: white;
           height: 460px;
@@ -429,6 +440,11 @@ footer {
           }
         }
       }
+
+      input#satisfaction {
+        height: 280px;
+      }
+
     }
   }
 }
