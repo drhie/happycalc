@@ -64,7 +64,7 @@ $(document).ready( function() {
 
   var slider = $('input#satisfaction');
   slider.on("input", function() {
-    $('.output').html("I'm <strong>" + Math.floor((this.value/20)*100) + '%</strong> happy about this!');
+    $('.output').html("<strong>" + Math.floor((this.value/20)*100) + '%</strong> satisfied!');
   })
 
   $('#add').on('click', function() {
