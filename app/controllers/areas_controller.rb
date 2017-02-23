@@ -32,6 +32,12 @@ class AreasController < ApplicationController
   end
 
   def destroy
+    # byebug
+    @area = Area.all.where(session_id: params[:session_id]) #fix this!
+    @area.delete_all
+  end
+
+  def destroy_all
     Area.delete_all
   end
 

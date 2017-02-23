@@ -20,11 +20,10 @@ $(document).ready( function() {
     // console.log(currentSession);
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
-    $.ajax({
-      url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-      // url: 'http://localhost:3000/delete_all',
-      method: 'DELETE'
-    });
+    // $.ajax({
+    //   url: '/delete_all',
+    //   method: 'DELETE'
+    // });
   })
 
   $('input#importance').attr('readonly', true);
@@ -74,8 +73,7 @@ $(document).ready( function() {
     if ((name !== "") && (importance !== "") && ($('.output').html() !== "Move the slider!") && (!$('.screen').html().includes(name.toLowerCase()))){
       $.ajax({
         dataType: 'json',
-        url: 'http://polar-shore-16234.herokuapp.com/areas',
-        // url: 'http://localhost:3000/areas',
+        url: '/areas',
         method: 'POST',
         data: {
           "area": {
@@ -106,8 +104,7 @@ $(document).ready( function() {
   $('#calculate').on('click', function() {
     if ($('.screen').html() !== "...") {
       $.ajax({
-        url: 'http://polar-shore-16234.herokuapp.com/',
-        // url: 'http://localhost:3000/',
+        url: '/',
         dataType: 'json',
         method: 'GET',
       }).done(function(data) {
@@ -135,17 +132,18 @@ $(document).ready( function() {
         var lowest_number = Math.min.apply(Math, (Object.keys(mostLeast)))
         var most = mostLeast[highest_number];
         var least = mostLeast[lowest_number];
-        debugger;
         $('#most').html(most.toUpperCase());
         $('#least').html(least.toUpperCase())
         $('.screen').append("<br>= " + totalSatisfaction.toFixed(1));
         $('.results').fadeIn();
         generateFeedback(totalSatisfaction);
-        // $.ajax({
-        //   url: 'http://polar-shore-16234.herokuapp.com/delete_all',
-        //   // url: 'http://localhost:3000/delete_all',
-        //   method: 'DELETE'
-        // });
+        $.ajax({
+          url: '/delete',
+          method: 'DELETE',
+          data: {
+            "session_id": currentSession
+          }
+        });
         reset();
         currentSession = parseFloat(Math.random().toFixed(10));
         // console.log(currentSession);
