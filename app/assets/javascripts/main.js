@@ -109,8 +109,8 @@ $(document).ready( function() {
         method: 'GET',
       }).done(function(data) {
         var totalImportance = 0;
-        var totalSatisfaction = 0
-        var mostLeast = {}
+        var totalSatisfaction = 0;
+        var mostLeast = {};
         data.forEach(function(object) {
           // console.log(object.session_id, currentSession);
           if (object.session_id === currentSession) {
@@ -121,8 +121,8 @@ $(document).ready( function() {
           if (object.session_id === currentSession) {
             var weightedImportance = object.importance / totalImportance;
             var satisfaction = (object.satisfaction / 20) * 100;
-            weightedSatisfaction = (satisfaction * weightedImportance);
-            totalSatisfaction += weightedSatisfaction
+            var weightedSatisfaction = (satisfaction * weightedImportance);
+            totalSatisfaction += weightedSatisfaction;
             mostLeast[weightedSatisfaction] = object.name;
             // console.log(object.name, weightedSatisfaction)
           }
