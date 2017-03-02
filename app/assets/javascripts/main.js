@@ -17,13 +17,8 @@ $(document).ready( function() {
 
   $('.start button').on('click', function() {
     currentSession = parseFloat(Math.random().toFixed(10));
-    // console.log(currentSession);
     $('html, body').css({ overflow: 'auto', height: 'auto' });
     $('.intro, .start').fadeOut();
-    // $.ajax({
-    //   url: '/delete_all',
-    //   method: 'DELETE'
-    // });
   })
 
   $('input#importance').attr('readonly', true);
@@ -174,7 +169,7 @@ $(document).ready( function() {
     } else if (totalSatisfaction < 73 && totalSatisfaction >= 62) {
       $('#feedback').html("You're generally satisfied with life, but there's stuff you want changed.");
     } else if (totalSatisfaction < 62 && totalSatisfaction >= 50) {
-      $('#feedback').html("You're pretty unhappy with life. We hope you seek out help beyond HappyCalc.");
+      $('#feedback').html("You're pretty unhappy with life. Focus more on the stuff that uplift you.");
     } else {
       $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in your community.");
     }
