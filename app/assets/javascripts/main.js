@@ -163,15 +163,15 @@ $(document).ready( function() {
 
   var generateFeedback = function(totalSatisfaction) {
     if (totalSatisfaction >= 85) {
-      $('#feedback').html("Wow! Life is going great for you! Keep it up!");
+      $('#feedback').html("Amazing! Life is going great for you! Keep it up!");
     } else if (totalSatisfaction < 85 && totalSatisfaction >= 73) {
-      $('#feedback').html("Life is good! Continue to cultivate good perspective and good habits!");
+      $('#feedback').html("Life is good!<br>Continue cultivating good perspective and habits!");
     } else if (totalSatisfaction < 73 && totalSatisfaction >= 62) {
-      $('#feedback').html("You're generally satisfied with life, but there's stuff you want changed.");
+      $('#feedback').html("You're generally satisfied with life, <br>but there's stuff you want changed.");
     } else if (totalSatisfaction < 62 && totalSatisfaction >= 50) {
-      $('#feedback').html("You're pretty unhappy with life. Focus more on the stuff that uplift you.");
+      $('#feedback').html("You're pretty unhappy with life.<br>Focus more on the stuff that uplift you.");
     } else {
-      $('#feedback').html("We're sorry to see you so unhappy. Please seek out support in your community.");
+      $('#feedback').html("We're sorry to see you so unhappy.<br>Please seek out support in your community.");
     }
   }
 
